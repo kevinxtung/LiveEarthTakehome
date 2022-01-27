@@ -3,7 +3,6 @@ import {Accordion, AccordionPanel, Box, RadioButtonGroup, Text} from 'grommet';
 import {excludeFieldsWithNonAlphaFirstChar, getUniqueFieldsInData} from "./Util";
 import Filters from "./FilterBuilder";
 import FilterTags from "./FilterTags";
-import ChartConfig from "./ChartConfig";
 
 export default ({dataset, dispatch}) => {
     // const fields = excludeStrangeFields(getUniqueFieldsInData(dataset.data).map(toPrettyField);

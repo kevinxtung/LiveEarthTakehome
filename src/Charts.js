@@ -2,6 +2,7 @@ import React from 'react';
 import {Box, Text} from 'grommet';
 import CalendarChart from "./CalendarChart";
 import BarChart from "./BarChart";
+import PieChart from "./PieChart";
 
 export default ({dataset, theme}) => {
 
@@ -15,13 +16,13 @@ export default ({dataset, theme}) => {
                 <BarChart dataset={dataset}/>
             </Box>
             <Box width='100%' background={theme.global.colors.body} margin={{bottom: "medium"}} pad='medium'>
-                {/*<CalendarChart dataset={dataset}/>*/}
+                <PieChart dataset={dataset}/>
             </Box>
         </>
         :
         <>
             <Box width='100%' background={theme.global.colors.body} margin={{bottom: "medium"}} pad='medium'>
-                <Text>Add some data to the map for some charts here!</Text>
+                <Text>Load some data to get started!</Text>
             </Box>
         </>
     )

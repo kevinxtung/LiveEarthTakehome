@@ -5,6 +5,7 @@ import DeckMap from "./DeckMap";
 import Sidebar from "./Sidebar";
 import Appbar from "./Appbar";
 import CalendarChart from './CalendarChart';
+import Charts from "./Charts";
 
 export default () => {
     const initialState = {
@@ -15,7 +16,7 @@ export default () => {
         layerType: 'Scatterplot',
         dateRange: {
             start: '2022-01-01',
-            end: '2022-01-14'
+            end: '2022-01-28'
         }
     }
 
@@ -59,7 +60,7 @@ export default () => {
 
     const widgetStyle = {
         pad: {left: '8%', right: '8%', top: '3%'},
-        backgroundColor: theme.global.colors.body,
+        background: theme.global.colors.background,
     }
 
     return (
@@ -86,7 +87,7 @@ export default () => {
 
             </Box>
             <Box {...widgetStyle}>
-                <CalendarChart dataset={state}/>
+                <Charts dataset={state} theme={theme}/>
             </Box>
 
         </Grommet>

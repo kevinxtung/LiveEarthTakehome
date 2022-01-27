@@ -39,13 +39,13 @@ export function dataToPieFormat(data) {
         return crimeBins;
     }, {});
 
-    const largestSix = take(6, Object.keys(crimeBins).map((key) => {
-        return {id: key, label: key, value: crimeBins[key]}
-    }).sort((binA, binB) => {return binA.value > binB.value}))
+    const largestSix = take(6, Object.keys(crimeBins)
+        .map((key) => ({id: key, label: key, value: crimeBins[key]}))
+        .sort((binA, binB) => binA.value > binB.value))
 
-    const largestSixSum = largestSix.reduce((sum, bin) => {return sum+bin.value}, 0)
+    const largestSixSum = largestSix.reduce((sum, bin) => sum+bin.value, 0)
 
     const largestSeven = [...largestSix, {id: 'Remaining', label: 'Remaining', value: total - largestSixSum}]
 
-    return largestSix;
+    return largestSeven;
 }

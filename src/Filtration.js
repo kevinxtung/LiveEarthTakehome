@@ -40,7 +40,7 @@ type Data = {
 //     },
 // ]
 
-export default (data, filters) => {
+export default (data, filters= []) => {
     let filteredData = data;
     filters.forEach((filter) => {
         filteredData = filteredData.filter((datum) => {

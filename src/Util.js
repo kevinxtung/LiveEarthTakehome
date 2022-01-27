@@ -22,6 +22,12 @@ export function getUniqueFieldsInData(json: any[]): string[] {
     return [...uniqueKeys];
 }
 
+export function getUniqueValuesFromKey(data: any[], key: string): string[] {
+    const uniqueValues = new Set();
+    data.forEach((datum) => {uniqueValues.add(datum[key])})
+    return [...uniqueValues];
+}
+
 export function toPrettyField(field: string): string {
     return field
         .split('_')

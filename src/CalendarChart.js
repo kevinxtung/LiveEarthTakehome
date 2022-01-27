@@ -2,11 +2,12 @@ import { ResponsiveCalendar, ResponsiveTimeRange } from '@nivo/calendar';
 import {dataToCalendarFormat} from './NivoUtils';
 import {Box} from 'grommet';
 import React from 'react';
+import Filtration from "./Filtration";
 
 export default ({dataset}) => {
 
     const calendarProps = {
-        data: dataToCalendarFormat(dataset.data),
+        data: dataToCalendarFormat(Filtration(dataset.data, dataset.filters)),
         from: dataset.dateRange.start,
         to: dataset.dateRange.end,
         emptyColor: "#eeeeee",
@@ -29,11 +30,11 @@ export default ({dataset}) => {
         }]
     }
 
-    const datesSpanMultipleYears = dataset.dateRange.start.substring(0, 3) !== dataset.dateRange.end.substring(0, 3);
+    const datesSpanMultipleYears = dataset.dateRange.start.substr(0, 4) !== dataset.dateRange.end.substr(0, 4);
 
 
     return (
-        <Box height='medium'>
+        <Box height={datesSpanMultipleYears ? 'large' : 'medium'}>
             {datesSpanMultipleYears ? <ResponsiveCalendar {...calendarProps}/> : <ResponsiveTimeRange {...calendarProps}/>}
         </Box>
     )

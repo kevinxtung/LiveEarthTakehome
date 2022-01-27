@@ -87,7 +87,7 @@ export default () => {
 
             </Box>
             <Box {...widgetStyle}>
-                <Charts dataset={state} theme={theme}/>
+                <Charts dataset={state} dispatch={dispatch} theme={theme}/>
             </Box>
 
         </Grommet>

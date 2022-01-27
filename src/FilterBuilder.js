@@ -7,7 +7,7 @@ export default ({dispatch, fields}) => {
     const [filterValue, setFilterValue] = useState('');
 
     return (
-        <Box pad={{top: 'small'}}>
+        <Box background='light-3' elevation='small' margin='small' pad={{top: 'small'}}>
             <Box direction='row' width='medium'>
                 <Box margin='small' width='xsmall'>
                     <Text>Where</Text>

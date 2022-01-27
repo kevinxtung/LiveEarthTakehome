@@ -30,14 +30,11 @@ export function dataToBarFormat(data) {
 }
 
 export function dataToPieFormat(data) {
-    let total = 0;
-
-    const crimeBins = data.reduce((crimeBins, datum) => {
+    const [crimeBins, total] = data.reduce(([crimeBins, total], datum) => {
         const crimeType = datum.incident_category;
         crimeBins[crimeType] = (crimeBins[crimeType] || 0) + 1;
-        total += 1;
-        return crimeBins;
-    }, {});
+        return [crimeBins, total + 1];
+    }, [{}, 0]);
 
     const largestSix = take(6, Object.keys(crimeBins)
         .map((key) => ({id: key, label: key, value: crimeBins[key]}))

@@ -12,63 +12,22 @@ type Data = {
     filed_online: boolean,
 }
 
-// const filters = [
-//     {
-//         field: 'incident_datetime',
-//         operator: '=',
-//         value: '3'
-//     },
-//     {
-//         field: 'incident_day_of_week',
-//         operator: '!=',
-//         value: 'Tuesday'
-//     },
-// ]
-//
-// const data = [
-//     {
-//         "incident_year": "2021",
-//         "incident_day_of_week": "Wednesday",
-//     },
-//     {
-//         "incident_year": "2021",
-//         "incident_day_of_week": "Sunday",
-//         "incident_number": "216053762",
-//     },
-//     {
-//         "incident_day_of_week": "Tuesday",
-//     },
-// ]
+const operators = {
+    '=': (a, b) => a == b,
+    '<': (a, b) => a < b,
+    '>': (a, b) => a > b,
+    '<=': (a, b) => a <= b,
+    '>=': (a, b) => a >= b,
+    '!=': (a, b) => a != b
+}
 
-export default (data, filters= []) => {
-    let filteredData = data;
-    filters.forEach((filter) => {
-        filteredData = filteredData.filter((datum) => {
-            switch (filter.operator) {
-                case '=':
-                    return datum[filter.field] === filter.value;
-                case '<':
-                    return datum[filter.field] < filter.value;
-                case '>':
-                    return datum[filter.field] > filter.value;
-                case '<=':
-                    return datum[filter.field] <= filter.value;
-                case '>=':
-                    return datum[filter.field] >= filter.value;
-                case '!=':
-                    return datum[filter.field] !== filter.value;
+export default function Filtration(data: Data[], filters: Filter[] = []) {
+    const checks = filters.map(i => {
+        const operator = operators[i.operator];
+        if (!operator) throw new Error('Operator does not exist')
+        return item => operator(item[i.field], i.value)
+    })
 
-                default:
-                    console.error(filter.operator)
-                    throw new Error();
-            }
-        });
-        }
-    )
-    console.log(filteredData.length);
-    filteredData = filteredData.filter((datum) => {
-        return datum["point"]}
-    );
-    console.log(filteredData.length);
-    return filteredData;
+    const check = item => checks.every(i => i(item))
+    return data.filter(check)
 }

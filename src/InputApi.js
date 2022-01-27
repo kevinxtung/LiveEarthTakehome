@@ -20,7 +20,9 @@ export default ({dataset, dispatch}) => {
 
         while (fetched !== 0) {
             await fetch(`https://data.sfgov.org/resource/wg3w-h783.json?%24where=((incident_date%20%3E%3D%20%22${startDate}%22)%20and%20(incident_date%20%3C%3D%20%22${endDate}%22))&%24offset=${offset}&%24limit=${limit}`,
-                {method: 'GET', headers: {'X-App-Token': SOCRATA_APP_TOKEN}})
+                // {method: 'GET', headers: {'X-App-Token': SOCRATA_APP_TOKEN}})
+                // {method: 'GET', headers: {'X-App-Token': SOCRATA_APP_TOKEN}})
+                {method: 'GET'})
                 .then(response => response.json())
                 .then(result => {
                     crimes = [...crimes, ...result];
@@ -29,8 +31,8 @@ export default ({dataset, dispatch}) => {
                 });
         }
         console.log("setting crimes " + crimes.length);
-        dispatch({type: 'setData', payload: crimes});
         dispatch({type: 'setDateRange', payload: dates})
+        dispatch({type: 'setData', payload: crimes});
     }
 
     return (

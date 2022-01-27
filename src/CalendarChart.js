@@ -1,7 +1,8 @@
-import { ResponsiveCalendar, ResponsiveTimeRange } from '@nivo/calendar';
-import {dataToCalendarFormat} from './NivoUtils';
-import {Box} from 'grommet';
 import React from 'react';
+import { ResponsiveCalendar, ResponsiveTimeRange } from '@nivo/calendar';
+import {Box} from 'grommet';
+
+import {dataToCalendarFormat} from './NivoUtils';
 import Filtration from "./Filtration";
 
 export default ({dataset}) => {

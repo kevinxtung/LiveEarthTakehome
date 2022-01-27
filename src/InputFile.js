@@ -1,5 +1,5 @@
-import {Box, Button, FileInput, Text} from "grommet";
 import React, {useState} from "react";
+import {Box, Button, FileInput, Text} from "grommet";
 
 export default ({dispatch}) => {
     const [uploadedFile, setUploadedFile] = useState();
@@ -23,9 +23,13 @@ export default ({dispatch}) => {
             </Box>
 
             <Box width='100%' pad='small'>
-                <Button label={uploadedFile ? 'Set Source' : 'Needs File'} primary={true} disabled={!uploadedFile} onClick={
-                    () => uploadedFile && reader.readAsText(uploadedFile)
-                }/>
+                <Button
+                    label={uploadedFile ? 'Set Source' : 'Needs File'}
+                    primary={true}
+                    disabled={!uploadedFile}
+                    onClick={
+                    () => uploadedFile && reader.readAsText(uploadedFile)}
+                />
             </Box>
         </>
     );

@@ -1,12 +1,13 @@
 import React, {useState, useReducer} from 'react';
 import {Box, Button, Heading, Grommet} from 'grommet';
 import {Tasks} from 'grommet-icons';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import DeckMap from "./DeckMap";
 import Sidebar from "./Sidebar";
 import Appbar from "./Appbar";
 import Charts from "./Charts";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default () => {
     const initialState = {
@@ -70,24 +71,22 @@ export default () => {
             <Box {...widgetStyle} direction='column' fill>
                 <Appbar>
                     <Heading level='4' margin='none'>San Francisco, But Crime</Heading>
+
                     <Button
                         icon={<Tasks/>}
-                        onClick={() => {
-                            setShowSidebar(!showSidebar);
-                            console.log(state);
-                        }}
+                        onClick={() => setShowSidebar(!showSidebar)}
                     />
                 </Appbar>
-                <Box direction='row' flex overflow={{horizontal: 'hidden'}} >
 
+                <Box direction='row' flex overflow={{horizontal: 'hidden'}} >
                     <Box flex align='center' justify='center' overflow='hidden'>
                         <DeckMap dataset={state}/>
                     </Box>
 
                     <Sidebar dispatch={dispatch} open={showSidebar} dataset={state}/>
                 </Box>
-
             </Box>
+
             <Box {...widgetStyle}>
                 <Charts dataset={state} dispatch={dispatch} theme={theme}/>
             </Box>

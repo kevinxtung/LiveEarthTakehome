@@ -1,5 +1,6 @@
-import {Box, Collapsible} from "grommet";
 import React from "react";
+import {Box, Collapsible} from "grommet";
+
 import InputData from "./InputData";
 import DatasetSidebarConfig from "./DatasetSidebarConfig";
 

@@ -1,5 +1,6 @@
-import {truncateTimeInDatetime} from "./Util";
 import {take} from "ramda";
+
+import {truncateTimeInDatetime} from "./Util";
 
 export function dataToCalendarFormat(data) {
     const dateBins = data.reduce((dateBins, datum) => {

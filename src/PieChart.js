@@ -1,9 +1,10 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie';
-import {dataToPieFormat} from "./NivoUtils";
-import Filtration from "./Filtration";
 import {Box} from "grommet";
 import { toast } from 'react-toastify'
+
+import {dataToPieFormat} from "./NivoUtils";
+import Filtration from "./Filtration";
 
 export default ({dataset, dispatch}) => {
     const pieProps = {

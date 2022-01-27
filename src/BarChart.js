@@ -1,9 +1,10 @@
-import { ResponsiveBar } from '@nivo/bar';
 import React from 'react';
+import { ResponsiveBar } from '@nivo/bar';
+import {Box} from "grommet";
+
 import {dataToBarFormat} from "./NivoUtils";
 import {getUniqueValuesFromKey} from "./Util";
 import Filtration from "./Filtration";
-import {Box} from "grommet";
 
 export default ({dataset}) => {
     const barProps = {

@@ -1,5 +1,6 @@
 import React from "react";
 import {Accordion, AccordionPanel, Box, Heading, RadioButtonGroup, Text} from 'grommet';
+
 import {excludeFieldsWithNonAlphaFirstChar, getUniqueFieldsInData} from "./Util";
 import Filters from "./FilterBuilder";
 import FilterTags from "./FilterTags";
@@ -17,11 +18,13 @@ export default ({dataset, dispatch}) => {
                             <Heading level='3'>
                                 Map Type
                             </Heading>
-                            <RadioButtonGroup name='_'
-                                              options={['Scatterplot', 'Heatmap', 'Hexagon',]}
-                                              value={dataset.layerType}
-                                              onChange={(event) =>
-                                                  dispatch({type: 'setLayerType', payload: event.target.value})}
+
+                            <RadioButtonGroup
+                                name='_'
+                                options={['Scatterplot', 'Heatmap', 'Hexagon',]}
+                                value={dataset.layerType}
+                                onChange={(event) =>
+                                    dispatch({type: 'setLayerType', payload: event.target.value})}
                             />
                         </Box>
 
@@ -29,26 +32,29 @@ export default ({dataset, dispatch}) => {
                             <Box pad='small'>
                                 <Text>Primary Color</Text>
                             </Box>
+
                             <Box pad='small'>
                                 <input type='color' value={dataset.color} onChange={
-                                    (event) => {
+                                    (event) =>
                                         dispatch({
                                             type: 'setColor',
                                             payload: event.target.value
                                         })
-                                    }}/>
+                                    }/>
                             </Box>
+
                             <Box pad='small'>
                                 <Text>Secondary Color</Text>
                             </Box>
+
                             <Box pad='small'>
                                 <input type='color' value={dataset.secondaryColor} onChange={
-                                    (event) => {
+                                    (event) =>
                                         dispatch({
                                             type: 'setSecondaryColor',
                                             payload: event.target.value
                                         })
-                                    }}/>
+                                    }/>
                             </Box>
                         </Box>
                     </Box>
@@ -57,6 +63,7 @@ export default ({dataset, dispatch}) => {
                 <AccordionPanel label='Filters'>
                     <Box pad='small'>
                         <Filters fields={fields} dispatch={dispatch}/>
+
                         <Box margin='small'>
                             <FilterTags dataset={dataset} dispatch={dispatch}/>
                         </Box>

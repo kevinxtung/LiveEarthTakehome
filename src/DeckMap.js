@@ -2,11 +2,12 @@ import React from 'react';
 import DeckGL from '@deck.gl/react';
 import {ScatterplotLayer} from '@deck.gl/layers';
 import {StaticMap} from 'react-map-gl';
-import {MAPBOX_KEY} from './KEYS';
 import {HeatmapLayer, HexagonLayer} from "@deck.gl/aggregation-layers";
-import {beautifyForDeckGl, lerpRgbColors, hexToRgb, getTooltip} from "./Util";
-import Filtration from "./Filtration";
 import mapboxgl from 'mapbox-gl'
+
+import Filtration from "./Filtration";
+import {lerpRgbColors, hexToRgb, getTooltip} from "./Util";
+import {MAPBOX_KEY} from './KEYS';
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax

@@ -46,28 +46,12 @@ export default ({dataset, dispatch}) => {
                                 }}/>
                         </Box>
                     </Box>
-
                 </AccordionPanel>
-
 
                 <AccordionPanel label='Filters'>
                     <FilterTags dataset={dataset} dispatch={dispatch}/>
                     <Filters fields={fields} dispatch={dispatch}/>
                 </AccordionPanel>
-
-                <AccordionPanel label='Charting'>
-                    <ChartConfig/>
-                </AccordionPanel>
-
-
-                {/*<AccordionPanel label='Export'>*/}
-                {/*    export stuff here*/}
-                {/*</AccordionPanel>*/}
-
-
-                {/*<AccordionPanel label='Fields'>*/}
-                {/*    fields stuff here*/}
-                {/*</AccordionPanel>*/}
             </Accordion>
         </Box>
     );

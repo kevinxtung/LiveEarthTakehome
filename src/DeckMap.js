@@ -4,7 +4,7 @@ import {ScatterplotLayer} from '@deck.gl/layers';
 import {StaticMap} from 'react-map-gl';
 import {MAPBOX_KEY} from './KEYS';
 import {HeatmapLayer, HexagonLayer} from "@deck.gl/aggregation-layers";
-import {beautifyForDeckGl, lerpRgbColors, hexToRgb} from "./Util";
+import {beautifyForDeckGl, lerpRgbColors, hexToRgb, getTooltip} from "./Util";
 import Filtration from "./Filtration";
 import mapboxgl from 'mapbox-gl'
 
@@ -66,33 +66,13 @@ export default ({dataset}) => {
 
     const layers = [new layerTypes[dataset.layerType]({...baseParams, ...(params[dataset.layerType])})];
 
-    const tooltipStyle = {
-            backgroundColor: '#444444',
-            body: {
-                color: '#F8F8F8'
-            },
-            borderRadius: '3px',
-            fontSize: '0.8em',
-    }
-
     return (
         <DeckGL
             initialViewState={initialSanFranMapView}
             controller={true}
             layers={layers}
             style={{position: 'relative'}}
-            getTooltip={
-                ({object}) => (object && object.points && `Total: ${object.points.length}`)
-
-                    ||
-
-                    ( object
-                        && (JSON.stringify(object)
-                        && {html: `<h2>${object.incident_subcategory === 'Other' ? object.incident_description : object.incident_subcategory}</h2>
-                                   <div>${beautifyForDeckGl(object)}</div>`,
-                    style: tooltipStyle}))
-            }
-
+            getTooltip={getTooltip}
         >
             <StaticMap mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_KEY || MAPBOX_KEY}/>
         </DeckGL>

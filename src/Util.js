@@ -70,3 +70,27 @@ export function lerpRgbColors(from, to) {
 export function truncateTimeInDatetime(datetime: string) {
     return datetime.split('T')[0];
 }
+
+const tooltipStyle = {
+    backgroundColor: '#444444',
+    body: {
+        color: '#F8F8F8'
+    },
+    borderRadius: '3px',
+    fontSize: '0.8em',
+}
+
+export function getTooltip({object}) {
+    if (!object || object.constructor !== Object) return null;
+
+    if (object.points) {
+        return `Total: ${object.points.length}`;
+    }
+
+    return {
+        html:
+            `<h2>${object.incident_subcategory === 'Other' ? object.incident_description : object.incident_subcategory}</h2>
+            <div>${beautifyForDeckGl(object)}</div>`,
+        style: tooltipStyle,
+    }
+}

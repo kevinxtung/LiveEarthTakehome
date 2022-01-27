@@ -30,19 +30,17 @@ export function dataToBarFormat(data) {
 }
 
 export function dataToPieFormat(data) {
-    const [crimeBins, total] = data.reduce(([crimeBins, total], datum) => {
+    const [crimeBins, total] = data.filter(i => i.incident_category).reduce(([crimeBins, total], datum) => {
         const crimeType = datum.incident_category;
         crimeBins[crimeType] = (crimeBins[crimeType] || 0) + 1;
         return [crimeBins, total + 1];
     }, [{}, 0]);
 
-    const largestSix = take(6, Object.keys(crimeBins)
+    const largest = take(5, Object.keys(crimeBins)
         .map((key) => ({id: key, label: key, value: crimeBins[key]}))
-        .sort((binA, binB) => binA.value > binB.value))
+        .sort((binA, binB) => binB.value - binA.value))
 
-    const largestSixSum = largestSix.reduce((sum, bin) => sum+bin.value, 0)
+    const remaining = total - largest.reduce((sum, bin) => sum+bin.value, 0)
 
-    const largestSeven = [...largestSix, {id: 'Remaining', label: 'Remaining', value: total - largestSixSum}]
-
-    return largestSeven;
+    return remaining ? [...largest, {id: 'Remaining', label: 'Remaining', value: remaining}] : largest;
 }

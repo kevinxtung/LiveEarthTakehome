@@ -4,10 +4,10 @@ import CalendarChart from "./CalendarChart";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart";
 
-export default ({dataset, theme}) => {
+export default ({dataset, dispatch, theme}) => {
 
     return (
-        dataset.data.length !== 0 ?
+        dataset.data.length ?
         <>
             <Box width='100%' background={theme.global.colors.body} margin={{bottom: "medium"}} pad='medium'>
                 <CalendarChart dataset={dataset}/>
@@ -16,7 +16,7 @@ export default ({dataset, theme}) => {
                 <BarChart dataset={dataset}/>
             </Box>
             <Box width='100%' background={theme.global.colors.body} margin={{bottom: "medium"}} pad='medium'>
-                <PieChart dataset={dataset}/>
+                <PieChart dataset={dataset} dispatch={dispatch}/>
             </Box>
         </>
         :

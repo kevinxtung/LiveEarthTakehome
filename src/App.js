@@ -4,8 +4,9 @@ import {Tasks} from 'grommet-icons';
 import DeckMap from "./DeckMap";
 import Sidebar from "./Sidebar";
 import Appbar from "./Appbar";
-import CalendarChart from './CalendarChart';
 import Charts from "./Charts";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default () => {
     const initialState = {
@@ -65,6 +66,7 @@ export default () => {
 
     return (
         <Grommet theme={theme} full>
+            <ToastContainer />
             <Box {...widgetStyle} direction='column' fill>
                 <Appbar>
                     <Heading level='4' margin='none'>San Francisco, But Crime</Heading>

@@ -1,4 +1,4 @@
-import {Box, Button, FileInput} from "grommet";
+import {Box, Button, FileInput, Text} from "grommet";
 import React, {useState} from "react";
 
 export default ({dispatch}) => {
@@ -19,13 +19,12 @@ export default ({dispatch}) => {
                         setUploadedFile(event.target.files[0])
                     }}
                 />
+                {uploadedFile ? null : <Text weight='lighter' size='medium' margin='small'>File should be type JSON</Text>}
             </Box>
 
             <Box width='100%' pad='small'>
                 <Button label={uploadedFile ? 'Set Source' : 'Needs File'} primary={true} disabled={!uploadedFile} onClick={
-                    () => {
-                        uploadedFile && reader.readAsText(uploadedFile);
-                    }
+                    () => uploadedFile && reader.readAsText(uploadedFile)
                 }/>
             </Box>
         </>

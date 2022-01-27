@@ -28,6 +28,6 @@ export default function Filtration(data: Data[], filters: Filter[] = []) {
         return item => operator(item[i.field], i.value)
     })
 
-    const check = item => checks.every(i => i(item))
+    const check = item => item.point && checks.every(i => i(item))
     return data.filter(check)
 }

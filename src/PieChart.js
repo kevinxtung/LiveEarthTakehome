@@ -3,6 +3,7 @@ import { ResponsivePie } from '@nivo/pie';
 import {dataToPieFormat} from "./NivoUtils";
 import Filtration from "./Filtration";
 import {Box} from "grommet";
+import { toast } from 'react-toastify'
 
 export default ({dataset, dispatch}) => {
     const pieProps = {
@@ -11,7 +12,7 @@ export default ({dataset, dispatch}) => {
         padding: 0.3,
         colors: {scheme: 'nivo'},
         onClick: (node) => {
-            if (node.id === "Remaining") return;
+            if (node.id === "Remaining") return toast("Can't remove this!", {theme: 'light', type: 'warning'});
             dispatch({type: "addFilter", payload: {
                     field: 'incident_category',
                     operator: '!=',

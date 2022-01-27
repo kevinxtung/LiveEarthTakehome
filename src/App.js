@@ -59,7 +59,7 @@ export default () => {
     };
 
     const widgetStyle = {
-        pad: {left: '8%', right: '8%', top: '3%'},
+        pad: {left: '3%', right: '3%', top: '3%'},
         background: theme.global.colors.background,
     }
 

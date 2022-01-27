@@ -94,7 +94,7 @@ export default ({dataset}) => {
             }
 
         >
-            <StaticMap mapboxApiAccessToken={process.env.MAPBOX_KEY || MAPBOX_KEY}/>
+            <StaticMap mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_KEY || MAPBOX_KEY}/>
         </DeckGL>
     );
 }

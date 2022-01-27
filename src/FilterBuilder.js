@@ -6,15 +6,12 @@ export default ({dispatch, fields}) => {
     const [filterOperator, setFilterOperator] = useState('');
     const [filterValue, setFilterValue] = useState('');
 
-
-
     return (
         <Box pad={{top: 'small'}}>
             <Box direction='row' width='medium'>
                 <Box margin='small' width='xsmall'>
                     <Text>Where</Text>
                 </Box>
-
 
                 <Select
                     options={fields}
@@ -43,9 +40,10 @@ export default ({dispatch, fields}) => {
                 />
             </Box>
             <Box width='100%' pad='small'>
-                <Button label={'Add Filter'} primary={true} onClick={
-                    () => {dispatch({type: 'addFilter', payload: {
-                            id: filterField+filterOperator+filterValue,
+                <Button label={'Add Filter'} primary={true} disabled={!(filterField && filterOperator && filterValue)} onClick={
+                    () => {
+                        dispatch({type: 'addFilter', payload: {
+                            id: `${filterField} ${filterOperator} ${filterValue}`,
                             field: filterField,
                             operator: filterOperator,
                             value: filterValue

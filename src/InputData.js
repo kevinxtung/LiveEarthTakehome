@@ -1,23 +1,20 @@
-import React, {useState} from "react";
-import CustomDataPresenter from "./CustomDataPresenter";
+import React from "react";
+import {Box, Tabs, Tab} from "grommet";
+import InputApi from "./InputApi";
+import InputFile from "./InputFile";
 
-const reader = new FileReader();
+export default ({dataset, dispatch}) => {
+    return (
+        <Box direction='column' width='90%' elevation='medium' pad='medium' margin='medium'>
+            <Tabs alignSelf='start' justify='start'>
+                <Tab alignSelf='start' justify='start' title="API Call">
+                    <InputApi dataset={dataset} dispatch={dispatch}/>
+                </Tab>
 
-
-const turnJsonDataToObject =  (jsonData: JSON) => {
-    const jsonObject = JSON.parse(jsonData)
-    console.log(Object.keys(jsonObject))
+                <Tab alignSelf='start' justify='start' title="File Upload">
+                    <InputFile dispatch={dispatch}/>
+                </Tab>
+            </Tabs>
+        </Box>
+    );
 }
-
-
-export default ({}) => {
-    const [data, setData] = useState(undefined);
-
-    const onFileAdd = (file) => {
-        reader.onload = (event) => {setData(event.target.result)};
-        reader.readAsText(file);
-    }
-
-    return (<CustomDataPresenter data={data} onFileAdd={onFileAdd}/>);
-}
-

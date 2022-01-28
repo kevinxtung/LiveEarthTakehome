@@ -1,12 +1,40 @@
-// Stackoverflow
-export function hexToRgb(hex) {
-    hex = hex.substr(1);
-    const bigint = parseInt(hex, 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
+import {hsv, hex} from "color-convert";
 
-    return [r, g, b]
+export function hexToRgb(hexCode: string) {
+    return hex.rgb(hexCode);
+}
+
+/**
+ * Jesse whined at me about the colors, so he gave me this code.
+ * @param {number[]} a
+ * @param {number[]} b
+ * @param {number} intervals
+ */
+function interpolateArrays(a, b, intervals = 12) {
+    if (a.length !== b.length) {
+        throw new Error('a and b must have the same length')
+    }
+
+    // get the differences between each slot in the array
+    const stepSizes = a.map((v, i) => (b[i] - v) / (intervals - 1))
+    const result = []
+
+    for (let i = 0; i < intervals; i++) {
+        // linear interpolate each slot by the step size
+        result.push(a.map((v, j) => v + i * stepSizes[j]))
+    }
+
+    return result
+}
+
+/**
+ * Jesse whined at me about the colors, so he gave me this code. He decries RGB lerping and sings praise for the one true HSV.
+ * @param {string} a
+ * @param {string} b
+ * @param {number} intervals
+ */
+export function interpolateHex (a, b, intervals = 12) {
+    return interpolateArrays(hex.hsv(a), hex.hsv(b), intervals).map(i => hsv.rgb(...i))
 }
 
 // This function exists because we need the fields in each datum,

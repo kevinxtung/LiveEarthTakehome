@@ -6,7 +6,7 @@ import {HeatmapLayer, HexagonLayer} from "@deck.gl/aggregation-layers";
 import mapboxgl from 'mapbox-gl'
 
 import Filtration from "./Filtration";
-import {lerpRgbColors, hexToRgb, getTooltip} from "./Util";
+import {lerpRgbColors, hexToRgb, getTooltip, interpolateHex} from "./Util";
 import {MAPBOX_KEY} from './KEYS';
 
 // @ts-ignore
@@ -52,7 +52,7 @@ export default ({dataset}) => {
             id: 'seventh-layer-of-bazinga',
             getWeight: d => 1,
             aggregation: 'SUM',
-            colorRange: lerpRgbColors(hexToRgb(dataset.color), hexToRgb(dataset.secondaryColor)),
+            colorRange: interpolateHex(dataset.color, dataset.secondaryColor),
         },
         'Hexagon': {
             id: 'zeroth-layer-of-hex',
@@ -60,7 +60,7 @@ export default ({dataset}) => {
             extruded: true,
             radius: 200,
             elevationScale: 4,
-            colorRange: lerpRgbColors(hexToRgb(dataset.color), hexToRgb(dataset.secondaryColor)),
+            colorRange: interpolateHex(dataset.color, dataset.secondaryColor),
             autoHighlight: true,
         }
     }

@@ -1,6 +1,9 @@
 # San Francisco, But Crime
 This is my crack at LiveEarth's coding takehome. A live version of the website is available [here](https://liveearth-kevin-homework.netlify.app/).  
 
+## Video Link
+You can access a 4-minute video of me running through a demo [here](https://www.loom.com/share/1e608f5229ca472295f354279708a313).
+
 ## Gallery
 ### You'll have a hex of a time with hexagons!
 ![Hex](./data/hex.png)
@@ -10,7 +13,6 @@ This is my crack at LiveEarth's coding takehome. A live version of the website i
 
 ### Colorful charts and maps are fun for the whole family!
 ![Charts](./data/charts.png)
-
 
 ## Retrospective
 

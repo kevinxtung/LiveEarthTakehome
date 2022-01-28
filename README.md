@@ -1,11 +1,16 @@
 # San Francisco, But Crime
-___
 This is my crack at LiveEarth's coding takehome. A live version of the website is available [here](https://liveearth-kevin-homework.netlify.app/).  
 
 ## Gallery
-___
-App screenshots coming Soon™.
-![Friend of the People](./data/pug.png)
+###You'll have a hex of a time with hexagons!
+![Hex](./data/hex.png)
+
+###Investigate those miscellaneous details with a closer look! Filters!
+![Map](./data/map.png)
+
+###Colorful charts and maps are fun for the whole family!
+![Charts](./data/charts.png)
+
 
 ## Retrospective
 
@@ -24,9 +29,9 @@ App screenshots coming Soon™.
 - Debugger debugger debugger.
 - Take a moment and learn TypeScript, and then use TypeScript.
 - Vet the ecosystem of my prefab component framework-of-choice for more than just 10 seconds.
+- Use memoize, have a more centralized theming, and debounce `onChange()` events like the color picker.
 
 ## Steps
-___
 
 ### Cloning
 `git clone https://github.com/kevinxtung/LiveEarthTakehome.git`
@@ -39,3 +44,6 @@ ___
 
 ### Starting
 `yarn start`
+
+## Bottom of the README
+![Friend of the People](./data/pug.png)

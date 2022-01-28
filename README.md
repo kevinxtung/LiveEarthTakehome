@@ -2,13 +2,13 @@
 This is my crack at LiveEarth's coding takehome. A live version of the website is available [here](https://liveearth-kevin-homework.netlify.app/).  
 
 ## Gallery
-###You'll have a hex of a time with hexagons!
+### You'll have a hex of a time with hexagons!
 ![Hex](./data/hex.png)
 
-###Investigate those miscellaneous details with a closer look! Filters!
+### Investigate those miscellaneous details with a closer look! Filters!
 ![Map](./data/map.png)
 
-###Colorful charts and maps are fun for the whole family!
+### Colorful charts and maps are fun for the whole family!
 ![Charts](./data/charts.png)
 
 
